@@ -9,13 +9,15 @@ npm init
 ```
 Este comando irá baixar todas as dependências necessárias para executar o projeto
 
+### E para executar o projeto digite:
+
 ```
 nodemon index
 ```
 
-## Para consultar a documentação da API no navegador, é necessário instalar as dependências do Aglio
+## Para consultar a documentação da API no navegador, é necessário instalar as dependências do aglio
 
-### Abra o terminal e vá até a pasta do projeto e digite:
+### Abra o terminal e vá até a pasta do projeto e instale o aglio:
 
 ```
 npm install -g aglio
