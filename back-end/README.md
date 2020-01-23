@@ -5,14 +5,16 @@
 ### Abra o terminal na pasta onde está localizado o projeto e digite:
 
 ```
-npm init
+npm install
 ```
 Este comando irá baixar todas as dependências necessárias para executar o projeto
 
-### E para executar o projeto digite:
+### Agora inicie o MongoDB
+
+### Com o MongoDB iniciado, execute o projeto no terminal
 
 ```
-nodemon index
+node index.js
 ```
 
 ## Para consultar a documentação da API no navegador, é necessário instalar as dependências do aglio
