@@ -1,0 +1,143 @@
+FORMAT: A1
+HOST: localhost:3000
+
+# Documentação da API
+ 
+    digitar a descrição da api aqui
+
+# Group API
+
+## Sobre [/]
+Aqui podemos descrever detalhes que são comuns a todos os serviços como formatos, headers, tipos de erros, etc
+
+# Group Ferramentas
+
+## Ferramentas [/tools]
+
+### Listar todas ferramentas [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "_id": "f0d3j5hn69d98fb8d",// Id definido automaticamente pelo banco de dados
+                "title": "Google",
+                "link": "www.google.com",
+                "description":"Motor de busca mais usado no mundo, e dona do sistema operacional mobile mais usado no mundo",
+                "tags": [ "Search", "pesquisa", "youtube", "android" ]
+            },
+            {
+                "_id": "g3sb9dl20dbn89ds0",// Id definido automaticamente pelo banco de dados
+                "title": "Microsoft",
+                "link": "www.microsoft.com",
+                "description": "Empresa responsável pela criação do windows, sistema operacional mais usado no mundo",
+                "tags": [ "Search", "pesquisa", "bing", "xbox", "windows" ]
+            },
+            {
+                "_id": "k3bdc93h5b6jj743k",// Id definido automaticamente pelo banco de dados
+                "title": "Facebook",
+                "link": "www.facebook.com",
+                "description": "Maior rede social",
+                "tags": [ "rede social", "instagram", "react", "mark zuckerberg" ]
+            }
+        ]
+
++ Response 204 (application/json)
+    + Attributes (listEmpty)
+
++ Response 400 (application/json)
+    + Attributes (listError)
+
+### Nova ferramenta [POST]
+
++ Request (application/json)
+
+            {
+                "title": "Facebook",
+                "link": "www.facebook.com",
+                "description": "Maior rede social",
+                "tags": [ "rede social", "instagram", "react", "mark zuckerberg" ]
+            }
+
++ Response 201 (application/json) 
+
+        [
+            {
+                "_id": "k3bdc93h5b6jj743k",// Id definido automaticamente pelo banco de dados
+                "title": "Facebook",
+                "link": "www.facebook.com",
+                "description": "Maior rede social",
+                "tags": [ "rede social", "instagram", "react", "mark zuckerberg" ]
+            }
+        ]
+
++ Response 422 (application/json)
+    + Attributes (createBodyErrors)
+
++ Response 400 (application/json)
+
+    + Attributes (CreateError)
+
+## Buscar ferramentas por tag [/tools?tag=instagram]
+
+### Buscar tag [GET]
+
++ Response 200 (application/json)
+        
+        [
+            {
+                "_id": "k3bdc93h5b6jj743k",// Id definido automaticamente pelo banco de dados
+                "title": "Facebook",
+                "link": "www.facebook.com",
+                "tags": [ "rede social", "instagram", "react", "mark zuckerberg" ]
+            }
+        ]
+
+## Buscar ferramentas globalmente [/tools?global=facebook]
+
+### Buscar palavra [GET]
+
++ Response 200 (application/json)
+        
+        [
+            {
+                "_id": "k3bdc93h5b6jj743k",// Id definido automaticamente pelo banco de dados
+                "title": "Facebook", 
+                "link": "www.facebook.com",
+                "tags": [ "rede social", "instagram", "react", "mark zuckerberg" ]
+            }
+        ]
+
+
+## Excluir ferramenta [/tools/:id]
+
+## Excluir [DELETE]
+
++ Response 204
++ Response 400 (application/json)
+
+    + Attributes (DeleteError)
+
+# Data Structures
+
+## listEmpty (object)
++ code: 204 (number)
++ msg: O banco de dados está vazio (string)
+
+## listError (object)
++ code: 400 (number)
++ error: Erro ao tentar listar as ferramentas, verifique a conexão com o banco de dados (string)
+
+## DeleteError (object)
++ code: 400 (number)
++ error: Erro ao tentar excluir ferramenta (string)
+
+## CreateError (object)
++ code: 400 (number)
++ error: Erro ao tentar criar nova ferramenta (string)
+
+## createBodyErrors (object)
++ code: 422 (number)
++ error: Verifique se está faltando algum campo a ser preenchido (string)
++ errors: ["Os campos que estão faltando serem preenchidos estaram presentes aqui"] (array)
+
